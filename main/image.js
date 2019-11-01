@@ -40,10 +40,13 @@ const ImageClone = ({ style, uri, onPress }) => {
       onPress={showImage}
       style={styles.container}
     >
-      {success && (
+      {success ? (
         <Image
           onLoadStart={() => setLoader(true)}
-          onError={() => setSuccess(false)}
+          onError={() => {
+            setSuccess(false);
+            setLoader(false);
+          }}
           onLoad={() => {
             setLoader(false);
             setSuccess(true);
@@ -51,9 +54,7 @@ const ImageClone = ({ style, uri, onPress }) => {
           style={[styles.image, style]}
           source={{ uri }}
         />
-      )}
-
-      {!success && (
+      ) : (
         <Image
           style={[styles.image, style]}
           source={require("./assets/default-img.png")}
