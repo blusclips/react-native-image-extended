@@ -8,7 +8,7 @@ import {
 
 const ImageClone = ({ style, uri, onPress }) => {
   const [loader, setLoader] = useState(false);
-  const [success, setSuccess] = useState(false);
+  const [success, setSuccess] = useState(true);
 
   const styles = StyleSheet.create({
     image: {
@@ -40,16 +40,25 @@ const ImageClone = ({ style, uri, onPress }) => {
       onPress={showImage}
       style={styles.container}
     >
-      <Image
-        onLoadStart={() => setLoader(true)}
-        onError={() => setSuccess(false)}
-        onLoad={() => {
-          setLoader(false);
-          setSuccess(true);
-        }}
-        style={[styles.image, style]}
-        source={success ? { uri } : require("./assets/default-img.png")}
-      />
+      {success && (
+        <Image
+          onLoadStart={() => setLoader(true)}
+          onError={() => setSuccess(false)}
+          onLoad={() => {
+            setLoader(false);
+            setSuccess(true);
+          }}
+          style={[styles.image, style]}
+          source={{ uri }}
+        />
+      )}
+
+      {!success && (
+        <Image
+          style={[styles.image, style]}
+          source={require("./assets/default-img.png")}
+        />
+      )}
       {loader && (
         <ActivityIndicator size={10} color="#e3e3e3" style={styles.loader} />
       )}
