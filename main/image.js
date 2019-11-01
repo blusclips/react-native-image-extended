@@ -35,7 +35,11 @@ const ImageClone = ({ style, uri, onPress }) => {
   };
 
   return (
-    <TouchableOpacity onPress={showImage} style={styles.container}>
+    <TouchableOpacity
+      activeOpacity={0.8}
+      onPress={showImage}
+      style={styles.container}
+    >
       <Image
         onLoadStart={() => setLoader(true)}
         onError={() => setSuccess(false)}
