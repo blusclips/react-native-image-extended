@@ -29,7 +29,9 @@ const ImageClone = ({ style, uri, onPress }) => {
   const showImage = () => {
     if (!loader) {
       if (uri !== undefined || uri !== "") {
-        onPress(uri);
+        if (success) {
+          onPress(uri);
+        }
       }
     }
   };
