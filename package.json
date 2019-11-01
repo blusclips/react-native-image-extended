@@ -1,0 +1,22 @@
+{
+  "name": "react-native-image-extended",
+  "version": "1.0.0",
+  "description": "extended react native image with loaders using functional components",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blusclips/react-native-image-extended.git"
+  },
+  "author": "Maseruka Cephas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/blusclips/react-native-image-extended/issues"
+  },
+  "homepage": "https://github.com/blusclips/react-native-image-extended#readme",
+  "devDependencies": {
+    "metro-react-native-babel-preset": "^0.57.0"
+  }
+}
