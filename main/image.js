@@ -8,6 +8,8 @@ import {
 
 const ImageClone = ({ style, uri, onPress }) => {
   const [loader, setLoader] = useState(false);
+  const [success, setSuccess] = useState(false);
+
   const styles = StyleSheet.create({
     image: {
       width: "100%",
@@ -36,10 +38,13 @@ const ImageClone = ({ style, uri, onPress }) => {
     <TouchableOpacity onPress={showImage} style={styles.container}>
       <Image
         onLoadStart={() => setLoader(true)}
-        onLoad={() => setLoader(false)}
-        defaultSource={require("./assets/default-img.png")}
+        onError={() => setSuccess(false)}
+        onLoad={() => {
+          setLoader(false);
+          setSuccess(true);
+        }}
         style={[styles.image, style]}
-        source={{ uri }}
+        source={success ? { uri } : require("./assets/default-img.png")}
       />
       {loader && (
         <ActivityIndicator size={10} color="#e3e3e3" style={styles.loader} />
